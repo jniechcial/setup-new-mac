@@ -70,9 +70,6 @@ echo "Use column view in all Finder windows by default."
 # Four-letter codes for the other view modes: `Nlsv`, `icnv`, `Flwv`.
 defaults write com.apple.finder FXPreferredViewStyle -string "clmv"
 
-echo "Show the ~/Library folder."
-chflags nohidden ~/Library
-
 echo "Don’t animate opening applications from the Dock."
 defaults write com.apple.dock launchanim -bool false
 
@@ -145,6 +142,7 @@ echo "Installing Homebrew."
 
 echo "Installing applications."
 brew cask install dropbox
+brew cask install google-drive-file-stream
 brew cask install spotify
 brew cask install slack
 brew cask install sublime-text
@@ -155,6 +153,7 @@ brew cask install selfcontrol
 brew cask install skype
 brew cask install iterm2
 brew cask install muzzle
+brew cask install the-unarchiver
 
 echo "Setting Git to use Sublime Text as default editor"
 git config --global core.editor "subl -n -w"
@@ -164,13 +163,7 @@ brew install mas
 brew install z
 brew install llvm
 brew install cmake
-
-echo "Open Dropbox and wait until all things will download."
-read -p "Press any key to continue... " -n1 -s
-
-echo "Set Dropbox as the default location for new Finder windows."
-defaults write com.apple.finder NewWindowTarget -string "PfLo"
-defaults write com.apple.finder NewWindowTargetPath -string "file://${HOME}/Dropbox/"
+brew install mackup
 
 echo "Add SSH key and copy to Clipboard." # http://rabexc.org/posts/using-ssh-agent
 ssh-keygen -t rsa -b 4096 -C "jakub.niechcial@gmail.com"
@@ -196,20 +189,6 @@ rm -rf osx-config-check
 echo "Installing AppStore apps."
 mas signin jakub.niechcial@gmail.com
 mas install 409183694 # Keynote
-
-echo "Set caps lock as ctrl."
-echo "Set iTerm backup from HOME/Dropbox/personal/computer_settings/iTerm."
-echo "Install Hack font from https://github.com/chrissimpkins/Hack"
-echo "Enable three finger drag from Accessibility settings."
-echo "After that restart computer, launch apps and log in."
-echo "Restore all application settings and dot files using Mackup. -> mackup restore"
-echo "Set up global .gitignore -> gi macos >> ~/.gitignore_global"
-echo "Install newest version of Xcode via xcversion install <version>."
-echo "Set sync of Dash to Dropbox."
-echo "Set sync of Alfred."
-echo "Open Spectacle and sync shortcuts -> cp -r ${HOME}/Dropbox/personal/computer_settings/spectacle/spectacle.json ~/Library/Application\ Support/Spectacle/Shortcuts.json 2> /dev/null"
-echo "Open Photos and sync."
-echo "Set up Context to use option+space and hide panel."
 
 echo "Installing Oh My Zsh."
 sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
