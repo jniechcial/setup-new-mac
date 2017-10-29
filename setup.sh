@@ -164,6 +164,7 @@ brew install z
 brew install llvm
 brew install cmake
 brew install mackup
+brew install vim
 
 echo "Add SSH key and copy to Clipboard." # http://rabexc.org/posts/using-ssh-agent
 ssh-keygen -t rsa -b 4096 -C "jakub.niechcial@gmail.com"
