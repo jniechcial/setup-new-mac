@@ -154,6 +154,7 @@ brew cask install skype
 brew cask install iterm2
 brew cask install muzzle
 brew cask install the-unarchiver
+brew cask install kindle
 
 echo "Setting Git to use Sublime Text as default editor"
 git config --global core.editor "subl -n -w"
